@@ -271,7 +271,12 @@ public class CamusJob extends Configured implements Tool {
 				+ newExecutionOutput.toString());
 
 		EtlInputFormat.setLogger(log);
-		
+
+		EtlMultiOutputFormat.setRecordWriterProviderClass(
+                  job,
+		  com.linkedin.camus.etl.kafka.common.StringRecordWriterProvider.class
+		);
+
 		job.setInputFormatClass(EtlInputFormat.class);
 		job.setOutputFormatClass(EtlMultiOutputFormat.class);
 		job.setNumReduceTasks(0);

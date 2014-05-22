@@ -269,6 +269,13 @@ public class CamusSweeper extends Configured implements Tool
         {
           FileInputFormat.addInputPath(job, stat.getPath());
         }
+        else
+        {
+	  // NOTE: adding this case. It sure seems like it would have
+	  // been okay originally. Maybe there were originally
+	  // metadata files mixed in... --Josh
+          FileInputFormat.addInputPath(job, stat.getPath());
+        }
       }
     }
 

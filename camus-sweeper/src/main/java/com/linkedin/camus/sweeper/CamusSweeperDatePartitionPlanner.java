@@ -48,6 +48,7 @@ public class CamusSweeperDatePartitionPlanner extends CamusSweeperPlanner
       String directory = dayFormatter.print(currentDate);
 
       List<Path> sourcePaths = Collections.singletonList(new Path(inputDir, directory));
+
       if (!fs.exists(sourcePaths.get(0)))
       {
         continue;
@@ -58,7 +59,7 @@ public class CamusSweeperDatePartitionPlanner extends CamusSweeperPlanner
       String source = sourcePaths.toString().substring(1, sourcePaths.toString().length() - 1);
       jobProps.put("input.paths", source);
       jobProps.put("dest.path", destPath.toString());
-      
+
       if (!fs.exists(destPath))
       {
         System.out.println(topic + " dest dir " + directory + " doesn't exist or . Processing.");

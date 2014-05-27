@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>com.linkedin.camus</groupId>
+		<groupId>com.infochimps</groupId>
 		<artifactId>camus-parent</artifactId>
 		<version>0.1.0-SNAPSHOT</version>
 	</parent>
@@ -13,15 +13,15 @@
 	<packaging>jar</packaging>
 	<dependencies>
 		<dependency>
-			<groupId>com.linkedin.camus</groupId>
+			<groupId>com.infochimps</groupId>
 			<artifactId>camus-api</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.linkedin.camus</groupId>
+			<groupId>com.infochimps</groupId>
 			<artifactId>camus-schema-registry</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.linkedin.camus</groupId>
+			<groupId>com.infochimps</groupId>
 			<artifactId>camus-kafka-coders</artifactId>
 		</dependency>
 		<dependency>

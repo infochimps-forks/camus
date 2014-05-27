@@ -267,7 +267,7 @@ public class CamusSweeper extends Configured implements Tool
         }
         else if (stat.getPath().getName().endsWith("avro"))
         {
-          FileInputFormat.addInputPath(job, stat.getPath());
+	  FileInputFormat.addInputPath(job, stat.getPath());
         }
         else
         {

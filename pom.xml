@@ -180,6 +180,15 @@
 	</repositories>
 
 	<build>
+		<!-- Extension to push/pull to Infochimps s3 repository -->
+		<extensions>
+			<extension>
+				<groupId>s3-wagon-private</groupId>
+				<artifactId>s3-wagon-private</artifactId>
+				<version>1.1.2</version>
+			</extension>
+		</extensions>
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -226,5 +235,35 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<pluginRepositories>
+		<!-- Maven central repository -->
+		<pluginRepository>
+			<id>Sonatype</id>
+			<name>Sonatype</name>
+			<url>http://oss.sonatype.org/content/groups/public</url>
+		</pluginRepository>
+
+		<!-- Clojars -->
+		<pluginRepository>
+			<id>clojars.org</id>
+			<name>Clojars</name>
+			<url>http://clojars.org/repo</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<!-- Infochimps s3 repository urls -->
+	<distributionManagement>
+		<repository>
+			<id>infochimps.releases</id>
+			<name>Infochimps Internal Repository</name>
+			<url>s3p://artifacts.chimpy.us/maven-s3p/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>infochimps.snapshots</id>
+			<name>Infochimps Internal Snapshot Repository</name>
+			<url>s3p://artifacts.chimpy.us/maven-s3p/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 </project>

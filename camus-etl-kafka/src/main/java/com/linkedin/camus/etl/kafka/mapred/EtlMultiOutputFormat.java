@@ -74,7 +74,7 @@ public class EtlMultiOutputFormat extends FileOutputFormat<EtlKey, Object> {
         return committer;
     }
 
-    public static void setRecordWriterProviderClass(JobContext job, Class<RecordWriterProvider> recordWriterProviderClass) {
+    public static void setRecordWriterProviderClass(JobContext job, Class<? extends RecordWriterProvider> recordWriterProviderClass) {
         job.getConfiguration().setClass(ETL_RECORD_WRITER_PROVIDER_CLASS, recordWriterProviderClass, RecordWriterProvider.class);
     }
 

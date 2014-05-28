@@ -33,8 +33,7 @@ public class CamusSweeperDatePartitionPlanner extends CamusSweeperPlanner
     int daysAgo = Integer.parseInt(props.getProperty("days.ago", "0"));
     int numDays = Integer.parseInt(props.getProperty("num.days", "15"));
 
-    DateTime time = new DateTime();
-    DateTime midnight = new DateTime(time.getYear(), time.getMonthOfYear(), time.getDayOfMonth(), 0, 0, 0, 0);
+    DateTime midnight = dUtils.getMidnight();
     DateTime startDate = midnight.minusDays(daysAgo);
 
     List<Properties> jobPropsList = new ArrayList<Properties>();
@@ -49,6 +48,7 @@ public class CamusSweeperDatePartitionPlanner extends CamusSweeperPlanner
       String directory = dayFormatter.print(currentDate);
 
       List<Path> sourcePaths = Collections.singletonList(new Path(inputDir, directory));
+
       if (!fs.exists(sourcePaths.get(0)))
       {
         continue;
@@ -59,7 +59,7 @@ public class CamusSweeperDatePartitionPlanner extends CamusSweeperPlanner
       String source = sourcePaths.toString().substring(1, sourcePaths.toString().length() - 1);
       jobProps.put("input.paths", source);
       jobProps.put("dest.path", destPath.toString());
-      
+
       if (!fs.exists(destPath))
       {
         System.out.println(topic + " dest dir " + directory + " doesn't exist or . Processing.");
